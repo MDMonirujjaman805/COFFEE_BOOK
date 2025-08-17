@@ -1,9 +1,8 @@
-
+import myImage from "./../assets/banner.jpg"
 const Banner = () => {
   return (
-    <div className="hero bg-base-200 min-h-screen">
-     {/* <img src={"/src/assets/banner.jpg"} alt="Banner-Image" /> */}
-     <img src={"/banner.jpg"} alt="Banner-Image" />
+    <div className=" bg-base-200 my-8 sm:h-full  md:min-h-[600px]">
+     <img className="object-cover" src={myImage} alt="Banner-Image" />
     </div>
   );
 };
