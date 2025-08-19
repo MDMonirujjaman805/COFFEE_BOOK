@@ -1,3 +1,5 @@
+// Reuseble Components................
+
 const Heading = ({ title, subTitle }) => {
   return (
     <div className="flex flex-col w-full justify-center items-center my-12">
