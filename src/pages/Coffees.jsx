@@ -5,43 +5,45 @@ import { useState } from "react";
 const Coffee = () => {
   const data = useLoaderData();
   const [coffees, setCoffees] = useState(data);
+
   const handleSort = (sortBy) => {
-    if (sortBy == "popularity") {
-      // sort by popularity
-      const sorted = [...data].sort((a,b)=> b.popularity - a.popularity)
-      setCoffees(sorted)
-    } else if (sortBy == "rating") {
-      // sort by rating
-      const sorted = [...data].sort((a,b)=> a.rating - b.rating)
-      setCoffees(sorted)
+    if (sortBy === "popularity") {
+      // sort by popularity (DSC)
+      const sorted = [...data].sort((a, b) => b.popularity - a.popularity);
+      setCoffees(sorted);
+    } else if (sortBy === "rating") {
+      // sort by rating (ASC)
+      const sorted = [...data].sort((a, b) => a.rating - b.rating);
+      setCoffees(sorted);
     }
   };
 
   return (
     <>
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className=" text-3xl font-thin">
-            Sort Coffee&apos;s by Popularity & Rating-&gt;
-            {/* Sort Coffee's by Popularity & Rating :- */}
-          </h1>
-        </div>
-        <div className=" space-x-4 ">
+      {/* Top section */}
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-thin text-center sm:text-left">
+          Sort Coffee&apos;s by Popularity & Rating →
+        </h1>
+
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={() => handleSort("popularity")}
-            className="btn btn-warning"
+            className="btn btn-warning text-sm sm:text-base"
           >
             Sort By Popularity (DSC)
           </button>
           <button
             onClick={() => handleSort("rating")}
-            className="btn btn-warning"
+            className="btn btn-warning text-sm sm:text-base"
           >
             Sort By Rating (ASC)
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
+
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
         {coffees.map((coffee) => (
           <Card key={coffee.id} coffee={coffee} />
         ))}
